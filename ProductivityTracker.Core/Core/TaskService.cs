@@ -17,7 +17,7 @@ namespace ProductivityTracker.Core.Core
             {
                 Description = dto.Description,
                 Status = dto.Status,
-                DueDate = new DateTime(),
+                DueDate = dto.DueDate,
                 Sentiment = dto.Sentiment
             };
 
