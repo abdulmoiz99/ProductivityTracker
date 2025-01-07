@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProductivityTracker.Core\ProductivityTracker.Core.csproj" />
     <ProjectReference Include="..\ProductivityTracker.Data\ProductivityTracker.Data.csproj" />
   </ItemGroup>
 

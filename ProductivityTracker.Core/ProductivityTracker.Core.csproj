@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProductivityTracker.Data\ProductivityTracker.Data.csproj" />
+  </ItemGroup>
+
 </Project>

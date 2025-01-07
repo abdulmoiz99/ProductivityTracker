@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ProductivityTracker.Core.Contracts;
+using ProductivityTracker.Core.Core;
 using ProductivityTracker.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<ProductivityTrackerDbContext>(options =>
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+
+builder.Services.AddTransient<ITaskService, TaskService>();
 
 var app = builder.Build();
 

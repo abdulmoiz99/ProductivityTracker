@@ -1,11 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductivityTracker.Core.Contracts;
+using ProductivityTracker.Core.Dto;
 
 namespace ProductivityTracker.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class TaskController : ControllerBase
+    
+    public class TaskController : BaseController
     {
+
+        private readonly ITaskService _service;
+
+        public TaskController(ITaskService taskService)
+        {
+            _service = taskService;
+        }
         private static readonly Task[] Tasks =
         [
             new Task { Id = 1, Title = "Task 1", Description = "Complete the project documentation", Status = "In Progress" },
@@ -19,6 +27,14 @@ namespace ProductivityTracker.API.Controllers
         public IActionResult Get()
         {
             return Ok(Tasks);
+        }
+
+        [HttpPost]
+        [Route("create-task")]
+        public async Task<IActionResult> CreateTask(CreateTaskDto dto)
+        {
+            var response = await _service.CreateTask(dto);
+            return StatusCode((int)response.StatusCode, response);
         }
     }
 
